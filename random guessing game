@@ -1,0 +1,29 @@
+public class guess
+{
+    public static void main(String args[])
+    {
+        int n=0;
+        Scanner sc=new Scanner(System.in);
+        Random rd=new Random();
+        System.out.println("Range: 0-25");
+        System.out.println("Guess the number :");
+        int userIp=0,compIp=25;
+        while(userIp!=compIp)
+        {
+
+
+        userIp=sc.nextInt();
+        compIp=rd.nextInt(25);
+
+        if(userIp==compIp)
+        {
+            System.out.println("You have guessed the right number!\nComputer Input:"+compIp);
+        }
+        else {
+            System.out.println("Wrong guess,better luck next time!\nComputer input: "+compIp);
+        }
+
+        n++;
+            System.out.println("Attempts: "+n);
+        }
+}}
