@@ -1,0 +1,52 @@
+import java.util.Scanner;
+public class Cart
+{
+    public static void main(String[] args)
+    {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("ENTER THE NUMBER OF CARTS : ");
+        int ncart=sc.nextInt();
+        int ncat=2;        //perishable n non perishable
+        System.out.println("ENTER THE NUMBER OF ITEMS IN EACH CATEGORY(PERISHABLE N NON-PERISHABLE) :");
+        int nitem=sc.nextInt();
+
+        int [][][]cart = new int[ncart][ncat][nitem];
+        int []cost = new int[ncart];
+        int temp=0;
+        for(int i=0;i<ncart;i++)
+        {
+            cost[i]=0;
+            for(int j=0;j<ncat;j++)
+            {
+                for(int k=0;k<nitem;k++)
+                {
+                    if( j==0)
+                    {
+                        System.out.printf("ENTER THE COST OF PERISHABLE ITEM %d OF CART%d : ",(k+1),(i+1));
+                        cart[i][j][k]=sc.nextInt();
+                        //cart[cart number][0][item number]=cartcart number[][perishable][item number]
+                    }
+                    else if( j==1)
+                    {
+                        System.out.printf("ENTER THE COST OF NON-PERISHABLE ITEM %dCART %d : ",(k+1),(i+1));
+                        cart[i][j][k]=sc.nextInt();
+                        //cart[cart number][1][item number]=cart[cart number][non perishable][item number]
+                    }
+                    cost[i]=cost[i]+cart[i][j][k];         //total cost of all carts
+                    if( j==1)
+                    {
+                        if(cart[i][j][k]>temp)
+                            temp=cart[i][j][k];       //temp holds the highest cost of a non perishable item
+                    }
+                }
+            }
+        }
+        System.out.printf("THE COST OF COSTLIEST NON-PERISHABLE ITEM SOLD IS : %d\n",temp);
+
+        for(int i=0;i<ncart;i++)
+        {
+            System.out.printf("THE TOTAL COST OF CART %d IS : %d\n",(i+1),cost[i]);
+        }
+    }
+}
